@@ -1,0 +1,23 @@
+The corrected CSS code avoids using `calc()` within the `@media` query:
+
+```css
+/* Calculate the maximum width beforehand */
+:root {
+  --max-width: calc(100vw - 100px);
+}
+
+@media (max-width: var(--max-width)) {
+  .element {
+    width: 50%;
+  }
+}
+
+/* Or use a JavaScript solution to get the value */
+/* Get the viewport width and adjust it accordingly */
+let viewportWidth = window.innerWidth;
+let maxWidth = viewportWidth - 100; // Adjust for the 100px offset
+
+document.documentElement.style.setProperty('--max-width', maxWidth + 'px');
+```
+
+This approach ensures that the calculation is performed outside the `@media` query, resulting in correct behavior across various browsers.
