@@ -1,0 +1,11 @@
+The following CSS code snippet demonstrates an uncommon error related to the usage of `calc()` within a `@media` query:
+
+```css
+@media (max-width: calc(100vw - 100px)) {
+  .element {
+    width: 50%;
+  }
+}
+```
+
+This code attempts to use `calc()` to dynamically calculate the maximum width based on the viewport width. However, this will not work as expected in many browsers, because `calc()` is not directly supported within media query conditions. The calculation should be done outside the `@media` rule.
